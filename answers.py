@@ -98,10 +98,10 @@ def negative_sampled_softmax(weights, biases, labels, inputs, num_sampled, num_c
         inputs_shape = tf.shape(inputs)
         batch_size = inputs_shape[0]
         dim = inputs_shape[1]
-        asserts.append(tf.equal(weights_shape[0], num_classes))
-        asserts.append(tf.equal(weights_shape[1], dim))
-        asserts.append(tf.equal(tf.shape(biases)[0], batch_size))
-        asserts.append(tf.equal(tf.shape(labels), batch_size))
+        asserts.append(tf.assert_equal(weights_shape[0], num_classes))
+        asserts.append(tf.assert_equal(weights_shape[1], dim))
+        asserts.append(tf.assert_equal(tf.shape(biases)[0], batch_size))
+        asserts.append(tf.assert_equal(tf.shape(labels), batch_size))
 
         # labels type should be int64
         asserts.append(tf.assert_type(labels, tf.int64))
